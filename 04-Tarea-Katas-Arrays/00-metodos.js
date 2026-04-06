@@ -7,7 +7,7 @@
 function aplicarDescuento(precios) {
   // TU CÓDIGO AQUÍ 👇
   return precios.map((precio) => precio * 0.8);
-}
+};
 
 /* ==========================================================================
    KATA 2: Control de Stock (.filter)
@@ -16,7 +16,9 @@ function aplicarDescuento(precios) {
 ========================================================================== */
 function filtrarDisponibles(productos) {
   // TU CÓDIGO AQUÍ 👇
-}
+
+  return productos.filter((producto) => producto.enStock===true);
+};
 
 /* ==========================================================================
    KATA 3: La Caja Registradora (.reduce)
@@ -25,7 +27,9 @@ function filtrarDisponibles(productos) {
 ========================================================================== */
 function calcularTotal(carrito) {
   // TU CÓDIGO AQUÍ 👇
-}
+
+  return carrito.reduce((acc, item) => acc + item, 0);
+};
 
 /* ==========================================================================
    KATA 4: El Consultorio (FIFO - Colas)
@@ -35,7 +39,10 @@ function calcularTotal(carrito) {
 ========================================================================== */
 function llamarSiguiente(salaDeEspera) {
   // TU CÓDIGO AQUÍ 👇
-}
+
+  const atendido = salaDeEspera.shift();
+  return `Atendiendo a: ${atendido}`;
+};
 
 // 🚨 ¡NO TOCAR ESTA LÍNEA!
 module.exports = {
