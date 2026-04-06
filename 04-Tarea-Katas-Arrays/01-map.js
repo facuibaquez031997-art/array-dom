@@ -12,7 +12,10 @@
 -------------------------------------------------------------------------- */
 function aplicarDescuento(precios) {
   // TU CÓDIGO AQUÍ 👇
-}
+
+  let descuento = precios.map((p) => p * 0.8);
+  return descuento;
+};
 
 /* --------------------------------------------------------------------------
    KATA 2 — Doblar los Números
@@ -21,7 +24,8 @@ function aplicarDescuento(precios) {
 -------------------------------------------------------------------------- */
 function doblar(numeros) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return numeros.map((n) => n * 2);
+};
 
 /* --------------------------------------------------------------------------
    KATA 3 — Nombre Completo
@@ -31,7 +35,8 @@ function doblar(numeros) {
 -------------------------------------------------------------------------- */
 function nombresCompletos(personas) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return personas.map(p => `${p.nombre} ${p.apellido}`);  
+};
 
 /* --------------------------------------------------------------------------
    KATA 4 — Cuadrados
@@ -40,7 +45,8 @@ function nombresCompletos(personas) {
 -------------------------------------------------------------------------- */
 function cuadrados(numeros) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return numeros.map((n) => n * n);
+};
 
 /* --------------------------------------------------------------------------
    KATA 5 — Celsius a Fahrenheit
@@ -50,7 +56,8 @@ function cuadrados(numeros) {
 -------------------------------------------------------------------------- */
 function celsiusAFahrenheit(celsius) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return celsius.map(C =>  C *9/5 + 32);
+};
 
 /* --------------------------------------------------------------------------
    KATA 6 — Precios con IVA
@@ -60,7 +67,8 @@ function celsiusAFahrenheit(celsius) {
 -------------------------------------------------------------------------- */
 function agregarIVA(precios) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return precios.map(p => Number((p * 1.21).toFixed(2)));
+};
 
 /* --------------------------------------------------------------------------
    KATA 7 — Etiquetas HTML
@@ -69,7 +77,8 @@ function agregarIVA(precios) {
 -------------------------------------------------------------------------- */
 function envolverEnLi(items) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return items.map(item => `<li>${item}</li>`);
+};
 
 /* --------------------------------------------------------------------------
    KATA 8 — Extractar Propiedad
@@ -79,7 +88,8 @@ function envolverEnLi(items) {
 -------------------------------------------------------------------------- */
 function extraerNombres(productos) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return productos.map((p => p.nombre));
+};
 
 /* --------------------------------------------------------------------------
    KATA 9 — Índice Visible
@@ -89,7 +99,9 @@ function extraerNombres(productos) {
 -------------------------------------------------------------------------- */
 function numerarLista(items) {
   // TU CÓDIGO AQUÍ 👇
-}
+
+  return items.map((item, i) => `${i + 1}. ${item}`);
+  };
 
 /* --------------------------------------------------------------------------
    KATA 10 — Normalizar Usuarios
@@ -100,7 +112,12 @@ function numerarLista(items) {
 -------------------------------------------------------------------------- */
 function normalizarUsuarios(usuarios) {
   // TU CÓDIGO AQUÍ 👇
-}
+ return usuarios.map(u => ({
+  nombre: u.nombre.toUpperCase(),
+  edad: u.edad,
+  esMayor: u.edad > 18
+ }));
+};
 
 // 🚨 ¡NO TOCAR ESTA LÍNEA!
 module.exports = {
