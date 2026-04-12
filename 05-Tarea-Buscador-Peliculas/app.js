@@ -1,3 +1,4 @@
+
 // 1. LA BASE DE DATOS MOCK
 const peliculas = [
   { titulo: "El Señor de los Anillos", año: 2001 },
@@ -18,6 +19,14 @@ const inputBusqueda = document.querySelector("#input-busqueda");
 function renderizarPeliculas(arrayPeliculas) {
   // 💡 Tip: Primero limpia el HTML del contenedor usando contenedor.innerHTML = '';
   // TU CÓDIGO AQUÍ 👇
+  contenedor.innerHTML = '';
+  arrayPeliculas.forEach(element => {
+    const tarjeta = document.createElement("div");
+    tarjeta.classList.add("tarjeta");
+    tarjeta.innerHTML = 
+    `<h3>${element.titulo}</h3> 
+    <p>${element.año}</p>`
+  });
 }
 
 // 4. EL BUSCADOR (Event Listener + Filter)
@@ -28,6 +37,8 @@ inputBusqueda.addEventListener("input", (evento) => {
   const textoBuscado = evento.target.value.toLowerCase();
 
   // TU CÓDIGO AQUÍ 👇
+  const peliculasFiltradas = peliculas.filter(pelicula => pelicula.titulo.toLowerCase().includes(textoBuscado));
+  renderizarPeliculas(peliculasFiltradas);
 });
 
 // 5. INICIALIZACIÓN
