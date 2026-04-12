@@ -14,7 +14,10 @@
 -------------------------------------------------------------------------- */
 function ticketCompra(productos) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return productos
+    .filter(p => p.disponible)
+    .reduce((acc, p) => acc + p.precio * p.cantidad, 0);
+};
 
 /* --------------------------------------------------------------------------
    KATA 2 — Resumen de Notas
@@ -26,6 +29,27 @@ function ticketCompra(productos) {
 -------------------------------------------------------------------------- */
 function resumenNotas(alumnos) {
   // TU CÓDIGO AQUÍ 👇
+  const resultado = alumnos.reduce((acc, alumno) => {
+    if (alumno.nota >= 6) {
+      acc.aprobados.push(alumno.nombre);
+    } else {
+      acc.reprobados.push(alumno.nombre);
+    }
+
+    acc.suma += alumno.nota;
+    return acc;
+  }, { aprobados: [], reprobados: [], suma: 0 });
+
+  const promedio = alumnos.length
+    ? Math.round((resultado.suma / alumnos.length) * 100) / 100
+    : 0;
+
+  return {
+    aprobados: resultado.aprobados,
+    reprobados: resultado.reprobados,
+    promedio
+  };
+
 }
 
 /* --------------------------------------------------------------------------
@@ -36,7 +60,9 @@ function resumenNotas(alumnos) {
 -------------------------------------------------------------------------- */
 function unicasEnMayusculas(palabras) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return palabras.map(palabra => palabra.toUpperCase())
+  .filter((palabra, index, self) => self.indexOf(palabra) === index);
+};
 
 /* --------------------------------------------------------------------------
    KATA 4 — Top 3 Más Caros
@@ -46,6 +72,11 @@ function unicasEnMayusculas(palabras) {
 -------------------------------------------------------------------------- */
 function top3MasCaros(productos) {
   // TU CÓDIGO AQUÍ 👇
+  return productos
+    .sort((a, b) => b.precio - a.precio)
+    .slice(0, 3)
+    .map(p => p.nombre);
+
 }
 
 /* --------------------------------------------------------------------------
@@ -58,6 +89,12 @@ function top3MasCaros(productos) {
 -------------------------------------------------------------------------- */
 function bonosPremium(usuarios) {
   // TU CÓDIGO AQUÍ 👇
+   return usuarios
+    .filter(u => u.esPremium)
+    .map(u => ({
+      ...u,
+      saldo: u.saldo * 1.1
+    }));
 }
 
 /* --------------------------------------------------------------------------
@@ -69,6 +106,10 @@ function bonosPremium(usuarios) {
 -------------------------------------------------------------------------- */
 function ventasPorRegion(ventas) {
   // TU CÓDIGO AQUÍ 👇
+  return ventas.reduce((acc, venta) => {
+    acc[venta.region] = (acc[venta.region] || 0) + venta.monto;
+    return acc;
+  }, {});
 }
 
 /* --------------------------------------------------------------------------
@@ -81,6 +122,10 @@ function ventasPorRegion(ventas) {
 -------------------------------------------------------------------------- */
 function inventarioCritico(productos) {
   // TU CÓDIGO AQUÍ 👇
+  return productos
+    .filter(producto => producto.stock < producto.minimo)
+    .map(producto => producto.nombre.toUpperCase())
+    .sort();
 }
 
 /* --------------------------------------------------------------------------
@@ -93,7 +138,13 @@ function inventarioCritico(productos) {
 -------------------------------------------------------------------------- */
 function limpiarHistorial(historial) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return historial.map(termino => termino.toLowerCase())
+  .filter((termino, index, self) => termino !== '' && self.indexOf(termino) === index)
+  .reduce((acc, termino) => {
+    acc.push(termino);
+    return acc;
+  }, []).sort();
+};
 
 /* --------------------------------------------------------------------------
    KATA 9 — Ranking de Jugadores
@@ -104,6 +155,11 @@ function limpiarHistorial(historial) {
 -------------------------------------------------------------------------- */
 function rankingJugadores(jugadores) {
   // TU CÓDIGO AQUÍ 👇
+  return jugadores
+    .filter(j => j.activo)
+    .sort((a, b) => b.puntos - a.puntos)
+    .slice(0, 3)
+    .map((j, i) => `${i + 1}. ${j.nombre} — ${j.puntos} pts`);
 }
 
 /* --------------------------------------------------------------------------
@@ -115,6 +171,10 @@ function rankingJugadores(jugadores) {
 -------------------------------------------------------------------------- */
 function salarioPromedioTech(empleados) {
   // TU CÓDIGO AQUÍ 👇
+  const techEmpleados = empleados.filter(emp => emp.departamento === 'tecnología' && emp.activo);
+  if (techEmpleados.length === 0) return 0;
+  const totalSalario = techEmpleados.reduce((acc, emp) => acc + emp.salario, 0);
+  return parseFloat((totalSalario / techEmpleados.length).toFixed(2));
 }
 
 // 🚨 ¡NO TOCAR ESTA LÍNEA!
