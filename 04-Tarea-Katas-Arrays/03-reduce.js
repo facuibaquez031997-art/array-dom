@@ -11,6 +11,7 @@
 -------------------------------------------------------------------------- */
 function sumarTotal(numeros) {
   // TU CÓDIGO AQUÍ 👇
+  return numeros.reduce((acc, item) => acc + item,0);
 }
 
 /* --------------------------------------------------------------------------
@@ -20,6 +21,7 @@ function sumarTotal(numeros) {
 -------------------------------------------------------------------------- */
 function multiplicarTodo(numeros) {
   // TU CÓDIGO AQUÍ 👇
+  return numeros.reduce((acc, item) => acc * item,1);
 }
 
 /* --------------------------------------------------------------------------
@@ -30,6 +32,9 @@ function multiplicarTodo(numeros) {
 -------------------------------------------------------------------------- */
 function encontrarMaximo(numeros) {
   // TU CÓDIGO AQUÍ 👇
+  return numeros.reduce((acc, item) => {
+    return acc > item ? acc : item;
+  },numeros[0]);
 }
 
 /* --------------------------------------------------------------------------
@@ -40,6 +45,10 @@ function encontrarMaximo(numeros) {
 -------------------------------------------------------------------------- */
 function contarOcurrencias(arr) {
   // TU CÓDIGO AQUÍ 👇
+  return arr.reduce((obj, item) => {
+    obj[item] = (obj[item] || 0) + 1;
+    return obj;
+  },{})
 }
 
 /* --------------------------------------------------------------------------
@@ -49,7 +58,8 @@ function contarOcurrencias(arr) {
 -------------------------------------------------------------------------- */
 function aplanar(arrayDeArrays) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return arrayDeArrays.reduce((arr, item) => arr.concat(item) ,[]);
+};
 
 /* --------------------------------------------------------------------------
    KATA 6 — Total del Carrito con Objetos
@@ -59,7 +69,8 @@ function aplanar(arrayDeArrays) {
 -------------------------------------------------------------------------- */
 function totalCarrito(items) {
   // TU CÓDIGO AQUÍ 👇
-}
+  return items.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+};
 
 /* --------------------------------------------------------------------------
    KATA 7 — Agrupar por Categoría
@@ -70,6 +81,13 @@ function totalCarrito(items) {
 -------------------------------------------------------------------------- */
 function agruparPorCategoria(productos) {
   // TU CÓDIGO AQUÍ 👇
+  return productos.reduce((acc, item) => {
+    if (!acc[item.categoria]) {
+      acc[item.categoria]= [];
+    }
+    acc[item.categoria].push(item.nombre);
+    return acc;
+  }, {})
 }
 
 /* --------------------------------------------------------------------------
@@ -80,6 +98,8 @@ function agruparPorCategoria(productos) {
 -------------------------------------------------------------------------- */
 function promedio(numeros) {
   // TU CÓDIGO AQUÍ 👇
+  const total = numeros.reduce((acc, n) => acc + n, 0);
+  return Math.round((total / numeros.length) * 100) / 100;
 }
 
 /* --------------------------------------------------------------------------
@@ -90,6 +110,9 @@ function promedio(numeros) {
 -------------------------------------------------------------------------- */
 function construirOracion(palabras) {
   // TU CÓDIGO AQUÍ 👇
+  return palabras.reduce((acc, palabra) => {
+  return acc ? acc + ' ' + palabra : palabra;
+}, '');
 }
 
 /* --------------------------------------------------------------------------
@@ -100,6 +123,11 @@ function construirOracion(palabras) {
 -------------------------------------------------------------------------- */
 function calcularBalance(transacciones) {
   // TU CÓDIGO AQUÍ 👇
+  return transacciones.reduce((acc, t) => {
+  return t.tipo === 'ingreso'
+    ? acc + t.monto
+    : acc - t.monto;
+}, 0);
 }
 
 // 🚨 ¡NO TOCAR ESTA LÍNEA!
